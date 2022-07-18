@@ -41,7 +41,13 @@ public class HeroController {
         return heroService.buscarPorNombre(name);
     }
 
-
+    @PutMapping("/crear")
+    public ResponseEntity<Mono<Hero>> actualizar(@RequestBody Hero hero) {
+        if(hero.getId() != null) {
+            return new ResponseEntity(heroService.actualizar(hero), HttpStatus.CREATED);
+        }
+        return new ResponseEntity(HttpStatus.NOT_FOUND);
+    }
 
     
 }

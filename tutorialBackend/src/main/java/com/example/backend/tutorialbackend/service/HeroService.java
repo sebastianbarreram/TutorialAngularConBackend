@@ -35,4 +35,8 @@ public class HeroService {
     public Mono<Void> elminarPorId(String id){
         return heroRepository.deleteById(id);
     }
+
+    public Mono<Hero> actualizar(Hero hero) {
+        return heroRepository.save(hero);
+    }
 }
