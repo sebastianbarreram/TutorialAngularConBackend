@@ -25,4 +25,23 @@ public class HeroController {
     public ResponseEntity<List<Hero>> traerTodos() {
         return new ResponseEntity(heroService.buscarTodos(), HttpStatus.OK);
     }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Mono<Hero>> buscarPorId(@PathVariable("id") String id){
+        return new ResponseEntity(heroService.buscarPorId(id),HttpStatus.OK);
+    }
+
+    @DeleteMapping(value="/{id}")
+    public ResponseEntity eliminarPorId(@PathVariable("id") String id){
+        return new ResponseEntity(heroService.elminarPorId(id),HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/buscarNombre/{name}")
+    public Mono<List<Hero>> buscarPorNombre(@PathVariable("name") String name){
+        return heroService.buscarPorNombre(name);
+    }
+
+
+
+    
 }
